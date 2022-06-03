@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "server:start": "nodemon -e ts --exec \"npm run server:compile\"",
+    "server:compile": "tsc && node ./build/main.js"
+  },
+  "exports": {
+    "client": "./client"
+  },
+  "dependencies": {
+    "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#devnet",
+    "@workquest/database-models": "github:WorkQuest/database-models#73ab944838bd3108561b8c314aa49d2cb1d1bd10",
+    "bcrypt": "^5.0.1",
+    "bignumber.js": "^9.0.2",
+    "bullmq": "^1.83.1",
+    "dotenv": "^16.0.1",
+    "inversify": "^6.0.1",
+    "ioredis": "^5.0.5",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "6.6.2",
+    "sequelize-typescript": "2.0.0",
+    "web3": "^1.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.0"
+  }
+}
