@@ -71,7 +71,7 @@ jobs:
           SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
           SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
           
-          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          backend_bin=${{ secrets.backend_bin }}/" backend-update.yml;
           PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
 
@@ -113,7 +113,7 @@ jobs:
           SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
           SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
           
-          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          backend_bin=${{ secrets.backend_bin }}/" backend-update.yml;
           PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
 
@@ -155,6 +155,6 @@ jobs:
           SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
           SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
           
-          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          backend_bin=${{ secrets.backend_bin }}/" backend-update.yml;
           PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
