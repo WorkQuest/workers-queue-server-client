@@ -120,7 +120,7 @@ jobs:
   deploy-main:
     if: "github.ref == 'refs/heads/mainnet'"
     runs-on: ubuntu-latest
-    environment: devnet
+    environment: mainnet
     needs: [ build ]
 
     steps:
