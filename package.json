@@ -1,7 +1,8 @@
 {
   "scripts": {
     "server:start": "nodemon -e ts --exec \"npm run server:compile\"",
-    "server:compile": "tsc && node ./build/main.js"
+    "server:compile": "tsc && node ./build/main.js",
+    "build": "tsc"
   },
   "exports": {
     "client": "./client"
