@@ -8,7 +8,18 @@ export interface SendFirstWqtToUsdtBuyerPayload {
   readonly txHashSwapInitialized: string;     /** Transaction hash from USDT bridge              */
 }
 
+export interface ResolveDisputeByAdminPayload {
+  questId: string;
+  disputeId: string;
+  decision: 'Rework' | 'AcceptWork' | 'RejectWork'
+}
+
 export type SendFirstWqtToUsdtBuyerJob = {
   name: "SendFirstWqtToUsdtBuyer",
   payload: SendFirstWqtToUsdtBuyerPayload,
+}
+
+export type ResolveDisputeByAdminJob = {
+  name: 'ResolveDisputeByAdmin',
+  payload: ResolveDisputeByAdminPayload
 }

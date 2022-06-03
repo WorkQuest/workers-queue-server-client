@@ -39,6 +39,8 @@ export class ResolveDisputeByAdminHandler extends BaseCompositeHandler<ResolveDi
     @inject(ThirdPartyTypes.DatabaseProvider) dbContext: Sequelize,
   ) {
     super(dbContext);
+
+    this.web3Provider = web3Provider;
   }
 
   public async Handle(command: ResolveDisputeByAdminCommand): ResolveDisputeByAdminResult {
@@ -60,7 +62,7 @@ export class ResolveDisputeByAdminHandler extends BaseCompositeHandler<ResolveDi
     }
 
     const contractData = Store[Networks.WorkQuest][WorkQuestNetworkContracts.WorkQuest];
-    const contract = new this.web3Provider.eth.Contract(contractData.getAbi(), quest.contractAddress);
+    const contract = new this.web3Provider.eth.Contract(contractData.getAbi().abi, quest.contractAddress);
 
     await questDisputeDecision.update({
       gasPriceAtMoment: gasPrice,
@@ -69,13 +71,12 @@ export class ResolveDisputeByAdminHandler extends BaseCompositeHandler<ResolveDi
 
     this.dbContext.transaction(async (tx) => {
       sendContractHandler.setOptions({ tx });
-
       const sendResult = await sendContractHandler.Handle({
         contract,
         args: [],
         method: ResolveDisputeByAdminHandler.getMethod(command.decision),
         gasPrice,
-        contractAddress: contractData.address,
+        contractAddress: quest.contractAddress,
         accountSender: command.accountSender,
       });
 

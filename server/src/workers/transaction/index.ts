@@ -1,6 +1,9 @@
-import SendFirstWqtToUsdtBuyerWorker from "./SendFirstWqtToUsdtBuyerWorker";
 import { WorkerInitOptions } from "../types";
 
+import SendFirstWqtToUsdtBuyerJob from "./SendFirstWqtToUsdtBuyerJob";
+import ResolveDisputeByAdminJob from "./ResolveDisputeByAdminJob";
+
 export default [
-  SendFirstWqtToUsdtBuyerWorker,
+  SendFirstWqtToUsdtBuyerJob,
+  ResolveDisputeByAdminJob
 ] as WorkerInitOptions[];

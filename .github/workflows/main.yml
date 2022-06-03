@@ -1,0 +1,160 @@
+name: Node-CI
+
+on:
+  push:
+    branches: [ devnet, testnet, mainnet ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[update]')"
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+
+      - name: Environment preparation
+        run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/id_rsa
+          chmod -R go= ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SERVER_SSH_KEY }}" >> ~/.ssh/id_rsa
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run build task
+        run: npm run build
+
+  deploy-dev:
+    if: "github.ref == 'refs/heads/devnet'"
+    runs-on: ubuntu-latest
+    environment: devnet
+    needs: [build]
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v3
+
+      - name: Environment preparation
+        run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/id_rsa
+          chmod -R go= ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SERVER_SSH_KEY }}" >> ~/.ssh/id_rsa
+          sudo apt-add-repository -y -u ppa:ansible/ansible
+          sudo apt install -y rsync
+          sudo pip3 install ansible==2.9.8
+
+      - name: Deploy to Server
+        run: |
+          chmod 700 ci-scripts
+          cd ci-scripts
+          ansible-playbook -i "${{ secrets.REMOTE_HOST }}" -e "ansible_user=${{ secrets.REMOTE_USER }} \          
+          
+          DB_LINK=${{ secrets.DB_LINK }} \
+          REDIS_LINK=${{ secrets.REDIS_LINK }} \
+          
+          WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
+          
+          DISPUTE_SENDER_ACCOUNT_ADDRESS=${{ secrets.DISPUTE_SENDER_ACCOUNT_ADDRESS }} \
+          DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
+          SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
+          SRC_DIR=${{ github.workspace }}/" backend-update.yml;
+
+  deploy-test:
+    if: "github.ref == 'refs/heads/testnet'"
+    runs-on: ubuntu-latest
+    environment: testnet
+    needs: [ build ]
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v3
+
+      - name: Environment preparation
+        run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/id_rsa
+          chmod -R go= ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SERVER_SSH_KEY }}" >> ~/.ssh/id_rsa
+          sudo apt-add-repository -y -u ppa:ansible/ansible
+          sudo apt install -y rsync
+          sudo pip3 install ansible==2.9.8
+
+      - name: Deploy to Server
+        run: |
+          chmod 700 ci-scripts
+          cd ci-scripts
+          ansible-playbook -i "${{ secrets.REMOTE_HOST }}" -e "ansible_user=${{ secrets.REMOTE_USER }} \          
+          
+          DB_LINK=${{ secrets.DB_LINK }} \
+          REDIS_LINK=${{ secrets.REDIS_LINK }} \
+          
+          WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
+          
+          DISPUTE_SENDER_ACCOUNT_ADDRESS=${{ secrets.DISPUTE_SENDER_ACCOUNT_ADDRESS }} \
+          DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
+          SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
+          SRC_DIR=${{ github.workspace }}/" backend-update.yml;
+
+  deploy-main:
+    if: "github.ref == 'refs/heads/mainnet'"
+    runs-on: ubuntu-latest
+    environment: devnet
+    needs: [ build ]
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v3
+
+      - name: Environment preparation
+        run: |
+          mkdir -p ~/.ssh/
+          touch ~/.ssh/id_rsa
+          chmod -R go= ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SERVER_SSH_KEY }}" >> ~/.ssh/id_rsa
+          sudo apt-add-repository -y -u ppa:ansible/ansible
+          sudo apt install -y rsync
+          sudo pip3 install ansible==2.9.8
+
+      - name: Deploy to Server
+        run: |
+          chmod 700 ci-scripts
+          cd ci-scripts
+          ansible-playbook -i "${{ secrets.REMOTE_HOST }}" -e "ansible_user=${{ secrets.REMOTE_USER }} \          
+          
+          DB_LINK=${{ secrets.DB_LINK }} \
+          REDIS_LINK=${{ secrets.REDIS_LINK }} \
+          
+          WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
+          
+          DISPUTE_SENDER_ACCOUNT_ADDRESS=${{ secrets.DISPUTE_SENDER_ACCOUNT_ADDRESS }} \
+          DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.DISPUTE_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS }} \
+          SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY=${{ secrets.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY }} \
+          
+          backend_bin=${{ github.workspace }}/" backend-update.yml;
+          PM2_SERVICE_NAME=${{ secrets.PM2_SERVICE_NAME }} \
+          SRC_DIR=${{ github.workspace }}/" backend-update.yml;

@@ -1,8 +1,9 @@
-import container from "../../ioc";
-import { Job, Worker } from "bullmq";
-import { DomainHandlerTypes, ThirdPartyTypes } from "../../ioc/types";
-import { IHandler } from "../../domain-handlers/types";
 import { SendFirstWqtToUsdtBuyerPayload } from "../../worker-job-types";
+import { IHandler } from "../../domain-handlers/types";
+import { DomainHandlerTypes } from "../../ioc/types";
+import config from "../../config/config";
+import container from "../../ioc";
+import { Job, WorkerOptions } from "bullmq";
 import {
   SendFirstWqtToUsdtBuyerResult,
   SendFirstWqtToUsdtBuyerCommand,
@@ -17,8 +18,8 @@ async function sendFirstWqtToUsdtBuyerJob(job: Job<SendFirstWqtToUsdtBuyerPayloa
     recipientAddress: job.data.recipientAddress,
     txHashSwapInitialized: job.data.txHashSwapInitialized,
     accountSender: {
-      accountAddress: '',
-      accountPrivateKey: '',
+      accountAddress: config.sendFirstWqtSenderAccount.address,
+      accountPrivateKey: config.sendFirstWqtSenderAccount.privateKey,
     }
   });
 }

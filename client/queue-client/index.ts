@@ -18,7 +18,7 @@ export class QueueClient {
       connection: this.redisConnection,
     });
 
-    await queue.add(`${name} - ${new Date()}`, payload);
+    await queue.add(`${ name } - ${ new Date() }`, payload);
 
     return queue;
   }

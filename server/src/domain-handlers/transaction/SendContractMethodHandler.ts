@@ -22,7 +22,7 @@ export class SendContractMethodHandler extends BaseDomainHandler<SendContractMet
 
   public async Handle(command: SendContractMethodCommand): SendTransactionResult {
     try {
-      const data = await command.contract.methods[command.method].call(...command.args)
+      const instanceMethod = await command.contract.methods[command.method].call(...command.args)
 
       const gasLimit = await command.contract.methods[command.method].estimateGas({
         gasPrice: command.gasPrice,
@@ -31,7 +31,7 @@ export class SendContractMethodHandler extends BaseDomainHandler<SendContractMet
 
       const signedTransaction = await this.web3Provider.eth.accounts.signTransaction({
         value: 0,
-        data: data.encodeURI(),
+        data: instanceMethod.encodeABI(),
         gas: gasLimit,
         gasPrice: command.gasPrice,
         to: command.contractAddress,

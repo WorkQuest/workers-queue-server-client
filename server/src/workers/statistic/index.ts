@@ -1,4 +1,4 @@
-import WriteUserStatisticWorker from './WriteUserStatisticWorker';
+import WriteUserStatisticWorker from './WriteUserStatisticJob';
 import { WorkerInitOptions } from "../types";
 
 export default [
