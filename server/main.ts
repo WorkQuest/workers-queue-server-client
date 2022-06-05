@@ -18,9 +18,9 @@ async function init() {
     const worker = new Worker(name, job, options);
 
     if (!worker.isRunning()) {
-      worker.run();
+      await worker.run();
     }
   }
 }
 
-init();
+init().catch(console.error);
