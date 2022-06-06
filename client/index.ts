@@ -1,4 +1,3 @@
-import { UnionJobTypes } from "@worker-job-types/types";
 import Redis from "ioredis/built/Redis";
 import { Queue } from "bullmq";
 import IORedis from 'ioredis';
@@ -13,7 +12,7 @@ export class QueueClient {
     this.redisConnection = new IORedis(connectLink);
   }
 
-  public async publisher({ name, payload }: UnionJobTypes): Promise<Queue> {
+  public async publisher({ name, payload }: any): Promise<Queue> {
     const queue = new Queue(name, {
       connection: this.redisConnection,
     });
