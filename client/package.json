@@ -1,0 +1,11 @@
+{
+  "name": "@workquest/workers-queue-client",
+  "repository": "git://github.com/WorkQuest/workers-queue-server-client.git/client",
+  "exports": {
+    ".": "./"
+  },
+  "dependencies": {
+    "bullmq": "^1.83.1",
+    "ioredis": "^5.0.5"
+  }
+}

@@ -3,7 +3,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "outDir": "build",
+    "outDir": "./build",
     "allowJs": false,
     "lib": ["es6"],
     "types": ["reflect-metadata"],
@@ -16,9 +16,10 @@
   },
   "exclude": ["node_modules"],
   "include": [
-    "./server/**/*.ts"
+    "./*.ts",
+    "./src/**/*.ts",
   ],
   "rootDirs": [
-    "server/src"
+    "src"
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "allowJs": false,
+    "target": "es6",
+    "sourceMap": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": ["node_modules"],
+}

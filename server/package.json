@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "server:start": "nodemon -e ts --exec \"npm run server:compile\"",
-    "server:compile": "tsc && node ./build/main.js",
-    "build": "tsc"
+    "server:start": "./node_modules/.bin/nodemon -e ts --exec \\\"npm run server:compile\\\"",
+    "server:compile": "./node_modules/.bin/tsc && node ./build/main.js",
+    "build": "./node_modules/.bin/tsc"
   },
-  "name": "@workquest/workers-queue",
+  "name": "@workquest/workers-queue-server",
   "repository": "git://github.com/WorkQuest/workers-queue-server-client.git",
   "exports": {
     "client": "./client"
