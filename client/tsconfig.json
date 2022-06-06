@@ -4,7 +4,6 @@
     "experimentalDecorators": true,
     "declaration": true,
     "outDir": "lib",
-    "rootDir": "src",
     "allowJs": false,
     "target": "es6",
     "sourceMap": false,
@@ -15,7 +14,8 @@
     "esModuleInterop": true
   },
   "include": [
-    "./**/*.ts"
+    "./*.ts",
+    "../server/src/worker-job-types/types.ts",
   ],
   "exclude": ["node_modules"],
 }
