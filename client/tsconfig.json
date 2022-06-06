@@ -11,11 +11,17 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "removeComments": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "worker-job-types/*": [
+        "../server/src/worker-job-types/*"
+      ]
+    },
   },
   "include": [
     "./*.ts",
-    "../server/src/worker-job-types/**/*.ts",
+    "../server/src/worker-job-types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

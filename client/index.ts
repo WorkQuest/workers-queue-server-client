@@ -1,4 +1,4 @@
-import { UnionJobTypes } from "../server/src/worker-job-types/types";
+import { UnionJobTypes } from "worker-job-types/types";
 import Redis from "ioredis/built/Redis";
 import { Queue } from "bullmq";
 import IORedis from 'ioredis';

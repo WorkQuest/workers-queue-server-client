@@ -1,4 +1,4 @@
-import { UnionJobTypes } from "../server/src/worker-job-types/types";
+import { UnionJobTypes } from "worker-job-types/types";
 import { Queue } from "bullmq";
 export declare class QueueClient {
     private readonly connectLink;
