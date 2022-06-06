@@ -14,7 +14,10 @@ import { SendFirstWqtToUsdtBuyerHandler, TransferTokenHandler, WriteUserStatisti
 const thirdPartyDependencies = new AsyncContainerModule(async bind => {
   const web3 = new Web3(new Web3.providers.HttpProvider(config.workQuestRpcProvider));
   const db = await initDatabase(config.dbLink);
-  const redis = new IORedis(config.redisLink);
+  const redis = new IORedis(config.redisLink, {
+    maxRetriesPerRequest: null,
+    enableReadyCheck: false
+  });
 
   bind<Web3>(ThirdPartyTypes.Web3RpcProvider).toConstantValue(web3);
   bind<Sequelize>(ThirdPartyTypes.DatabaseProvider).toConstantValue(db);
