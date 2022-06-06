@@ -14,14 +14,14 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "worker-job-types/*": [
-        "../server/src/worker-job-types/*"
+      "@worker-job-types*": [
+        "../server/src/worker-job-types*"
       ]
     },
   },
   "include": [
-    "./*.ts",
-    "../server/src/worker-job-types/**/*.ts"
+    "./*.ts"
+//    "../server/src/worker-job-types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
