@@ -4,6 +4,8 @@
     "server:compile": "tsc && node ./build/main.js",
     "build": "tsc"
   },
+  "name": "@workquest/workers-queue",
+  "repository": "git://github.com/WorkQuest/workers-queue-server-client.git",
   "exports": {
     "client": "./client"
   },
