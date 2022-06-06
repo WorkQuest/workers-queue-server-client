@@ -15,7 +15,7 @@
   },
   "include": [
     "./*.ts",
-    "../server/src/worker-job-types/types.ts",
+    "../server/src/worker-job-types/**/*.ts",
   ],
   "exclude": ["node_modules"],
 }
