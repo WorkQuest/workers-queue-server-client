@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#devnet",
-    "@workquest/database-models": "github:WorkQuest/database-models#73ab944838bd3108561b8c314aa49d2cb1d1bd10",
+    "@workquest/database-models": "github:WorkQuest/database-models#54abf28969fe1b7e33a6552e669e531d8eb7d5ca",
     "bcrypt": "^5.0.1",
     "bignumber.js": "^9.0.2",
     "bullmq": "^1.83.1",

@@ -24,7 +24,7 @@ export class SendContractMethodHandler extends BaseDomainHandler<SendContractMet
     try {
       const instanceMethod = await command.contract.methods[command.method].call(...command.args)
 
-      const gasLimit = await command.contract.methods[command.method].estimateGas({
+      const gasLimit = await instanceMethod.estimateGas({
         gasPrice: command.gasPrice,
         from: command.accountSender.accountAddress,
       });

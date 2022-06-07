@@ -62,7 +62,7 @@ export class ResolveDisputeByAdminHandler extends BaseCompositeHandler<ResolveDi
     }
 
     const contractData = Store[Networks.WorkQuest][WorkQuestNetworkContracts.WorkQuest];
-    const contract = new this.web3Provider.eth.Contract(contractData.getAbi().abi, quest.contractAddress);
+    const contract = new this.web3Provider.eth.Contract(contractData.getAbi(), quest.contractAddress);
 
     await questDisputeDecision.update({
       gasPriceAtMoment: gasPrice,
