@@ -13,7 +13,7 @@
 
 - name: Upload backend files
   synchronize:
-    src: '{{ SRC_DIR }}/server'
+    src: '{{ SRC_DIR }}/server/'
     dest: '{{ backend_bin }}'
   register: copyfiles
 
