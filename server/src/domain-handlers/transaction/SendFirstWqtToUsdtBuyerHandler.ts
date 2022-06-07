@@ -9,6 +9,7 @@ import { ThirdPartyTypes, DomainHandlerTypes } from "../../ioc/types";
 import {
   Transaction,
   TransactionStatus,
+  BlockchainNetworks,
   FirstWqtTransmissionData,
 } from "@workquest/database-models/lib/models";
 import {
@@ -104,7 +105,7 @@ export class SendFirstWqtToUsdtBuyerHandler extends BaseCompositeHandler<SendFir
           gasUsed: transferResult.transactionReceipt.gasUsed,
           amount: amountValueToUserMinusPlatformFee,
           blockNumber: transferResult.transactionReceipt.blockNumber,
-          // network: ,
+          network: BlockchainNetworks.workQuestDevNetwork,
         }, { transaction: tx });
 
         const transmissionStatus = transferResult.status === TransactionResultStatus.Success

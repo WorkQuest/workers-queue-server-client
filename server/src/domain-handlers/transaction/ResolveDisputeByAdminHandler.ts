@@ -10,6 +10,7 @@ import {
   Quest,
   Transaction,
   TransactionStatus,
+  BlockchainNetworks,
   QuestDisputeDecisionData,
 } from "@workquest/database-models/lib/models";
 import {
@@ -104,7 +105,7 @@ export class ResolveDisputeByAdminHandler extends BaseCompositeHandler<ResolveDi
           gasUsed: sendResult.transactionReceipt.gasUsed,
           amount: 0,
           blockNumber: sendResult.transactionReceipt.blockNumber,
-          // network: ,
+          network: BlockchainNetworks.workQuestDevNetwork,
         }, { transaction: tx });
 
         const transmissionStatus = sendResult.status === TransactionResultStatus.Success

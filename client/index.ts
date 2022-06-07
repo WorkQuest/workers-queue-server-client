@@ -17,7 +17,13 @@ export class QueueClient {
       connection: this.redisConnection,
     });
 
-    await queue.add(`${ name } - ${ new Date() }`, payload);
+    const settings = { };
+
+    if (name === 'ResolveDisputeByAdmin') {
+      settings['dalay'] = 4000;
+    }
+
+    await queue.add(`${ name } - ${ new Date() }`, payload, settings);
 
     return queue;
   }
