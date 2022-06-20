@@ -10,7 +10,7 @@
     "client": "./client"
   },
   "dependencies": {
-    "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#devnet",
+    "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#testnet",
     "@workquest/database-models": "github:WorkQuest/database-models#a76d641d4a6cb856d1b1ed64a5732e678530730f",
     "bcrypt": "^5.0.1",
     "bignumber.js": "^9.0.2",
