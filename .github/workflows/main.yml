@@ -5,9 +5,8 @@ on:
     branches: [ devnet, testnet, master ]
 
 jobs:
-  timeout-minutes: 20
   build:
-
+    timeout-minutes: 16
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, '[update]')"
 
@@ -39,6 +38,7 @@ jobs:
           npm run build
 
   deploy-dev:
+    timeout-minutes: 5
     if: "github.ref == 'refs/heads/devnet'"
     runs-on: ubuntu-latest
     environment: devnet
@@ -81,6 +81,7 @@ jobs:
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
 
   deploy-testnet:
+    timeout-minutes: 5
     if: "github.ref == 'refs/heads/testnet'"
     runs-on: ubuntu-latest
     environment: testnetS
@@ -123,6 +124,7 @@ jobs:
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
 
   deploy-main:
+    timeout-minutes: 5
     if: "github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     environment: master
