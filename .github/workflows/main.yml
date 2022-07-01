@@ -56,7 +56,7 @@ jobs:
           echo "${{ secrets.SERVER_SSH_KEY }}" >> ~/.ssh/id_rsa
           sudo apt-add-repository -y -u ppa:ansible/ansible
           sudo apt install -y rsync
-          sudo pip3 install ansible==2.9.8
+          sudo pip3 install ansible==2.10.7
 
       - name: Deploy to Server
         run: |
@@ -82,7 +82,7 @@ jobs:
   deploy-testnet:
     if: "github.ref == 'refs/heads/testnet'"
     runs-on: ubuntu-latest
-    environment: testnet
+    environment: testnetS
     needs: [ build ]
 
     steps:
@@ -122,9 +122,9 @@ jobs:
           SRC_DIR=${{ github.workspace }}/" backend-update.yml;
 
   deploy-main:
-    if: "github.ref == 'refs/heads/mainnet'"
+    if: "github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
-    environment: mainnet
+    environment: master
     needs: [ build ]
 
     steps:
