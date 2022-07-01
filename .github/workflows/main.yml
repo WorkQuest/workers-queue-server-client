@@ -2,7 +2,7 @@ name: Node-CI
 
 on:
   push:
-    branches: [ devnet, testnet, mainnet ]
+    branches: [ devnet, testnet, master ]
 
 jobs:
   build:
