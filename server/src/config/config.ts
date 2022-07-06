@@ -13,4 +13,8 @@ export default {
     address: process.env.SEND_FIRST_WQT_SENDER_ACCOUNT_ADDRESS,
     privateKey: process.env.SEND_FIRST_WQT_SENDER_ACCOUNT_PRIVATE_KEY
   },
+  server: {
+    host: process.env.SERVER_HOST ? process.env.SERVER_HOST : 'localhost',
+    port: process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3000
+  }
 }
