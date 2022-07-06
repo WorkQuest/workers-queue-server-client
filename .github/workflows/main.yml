@@ -67,6 +67,9 @@ jobs:
           DB_LINK=${{ secrets.DB_LINK }} \
           REDIS_LINK=${{ secrets.REDIS_LINK }} \
           
+          SERVER_HOST=${{ secrets.SERVER_HOST }} \
+          SERVER_PORT=${{ secrets.SERVER_PORT }} \
+          
           WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
           
           DISPUTE_SENDER_ACCOUNT_ADDRESS=${{ secrets.DISPUTE_SENDER_ACCOUNT_ADDRESS }} \
@@ -109,6 +112,9 @@ jobs:
           DB_LINK=${{ secrets.DB_LINK }} \
           REDIS_LINK=${{ secrets.REDIS_LINK }} \
           
+          SERVER_HOST=${{ secrets.SERVER_HOST }} \
+          SERVER_PORT=${{ secrets.SERVER_PORT }} \
+          
           WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
           
           DISPUTE_SENDER_ACCOUNT_ADDRESS=${{ secrets.DISPUTE_SENDER_ACCOUNT_ADDRESS }} \
@@ -150,6 +156,9 @@ jobs:
           
           DB_LINK=${{ secrets.DB_LINK }} \
           REDIS_LINK=${{ secrets.REDIS_LINK }} \
+          
+          SERVER_HOST=${{ secrets.SERVER_HOST }} \
+          SERVER_PORT=${{ secrets.SERVER_PORT }} \
           
           WORK_QUEST_RPC_PROVIDER=${{ secrets.WORK_QUEST_RPC_PROVIDER }} \
           
