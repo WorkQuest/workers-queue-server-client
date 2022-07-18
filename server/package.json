@@ -10,8 +10,8 @@
     "client": "./client"
   },
   "dependencies": {
-    "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#testnet",
-    "@workquest/database-models": "github:WorkQuest/database-models#a76d641d4a6cb856d1b1ed64a5732e678530730f",
+    "@workquest/contract-data-pools": "github:WorkQuest/contract-data-pools#mainet",
+    "@workquest/database-models": "github:WorkQuest/database-models#c8a9bd4afcf0e141322151a226ddd3b17b916187",
     "bcrypt": "^5.0.1",
     "bignumber.js": "^9.0.2",
     "bullmq": "^1.83.1",
